@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+      form {
+        max-width: 568px;
+        width: 100%;
+      }
+      form div {
+        margin-bottom: 50px;
+      }
+      form div:nth-child(1) {
+        padding: 20px;
+        border-left: 20px solid brown;
+      }
+      form div.alert {
+        width: 100%;
+        padding: 10px;
+        background-color: rgb(238, 150, 150);
+        color: aliceblue;
+      }
+      form div ul {
+        list-style-position: inside;
+        list-style-type: none;
+      }
+      form div ul li {
+        margin-bottom: 10px;
+      }
+      form div label {
+        display: block;
+        margin-bottom: 20px;
+        font-size: 1.2em;
+      }
+      form div input {
+        width: 100%;
+        padding: 15px;
+        outline: none;
+      }
+      form div button {
+        background-color: blue;
+        padding: 20px;
+        color: white;
+        width: 100%;
+        font-size: 1.5em;
+        border: none;
+      }
+      form div input:focus {
+        border: 2px solid blue;
+      }
+      .my-2 {
+        display: block;
+        margin: 5px 0;
+      }
+     
+      .alert {
+        margin: 0;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+   
+    <form action="/login" method="post">
+      <div>
+        <p>Please Login Now</p>
+      </div>
+      <% if (messages.login_failed) { %>
+       <div class="alert">
+        <ul>
+          <li><%= messages.login_failed %></li>
+        </ul>
+       </div>
+      <% } %>
+      <% if (messages.message_validation) { %>
+       <div class="alert">
+        <ul>
+            <% messages.message_validation.forEach(message => { %>
+                <li class="my-2 "><%= message.msg %></li>
+             
+            <% }) %>
+        </ul>
+       </div>
+      <% } %>  
+
+      <div>
+        <label for="username">Username</label>
+
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Input your username"
+          autofocus required
+        />
+      </div>
+      <div>
+        <label for="password">Password</label>
+     
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Input your password"
+          required
+        />
+      </div>
+      <div>
+        <button type="submit">Login</button>
+      </div>
+    </form>
+  </body>
+</html>

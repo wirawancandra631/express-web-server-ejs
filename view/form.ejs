@@ -1,0 +1,38 @@
+<%- include('./layout/header') %>
+  <section class="form-container">
+    <form action="/form" method="post">
+     
+        <div>
+            <p>Tambah data product</p>
+        </div>
+        <% if (messages.message_validation) { %>
+         <div class="alert">
+            <% messages.message_validation.forEach(message => { %>
+                <p><%= message.msg %></p>
+            <% }) %>
+         </div>
+        <% } %>
+        <div>
+            <label for="name_product">Nama Produk</label>
+            <input type="text" name="name_product" id="name_product" autofocus required>
+        </div>
+        
+        <div>
+            <label for="price_product">Price Produk</label>
+            <input type="number" name="price_product" id="price_product" required>
+        </div>
+        <div>
+            <label for="supplier">Supplier</label>
+            <select name="supplier" id="supplier" required>
+                <option value="Farm A">Farm A</option>
+                <option value="Farm B">Farm B</option>
+            </select>
+           
+        </div>
+        <div>
+            <button type="submit">Tambah Data</button>
+        </div>
+
+    </form>
+  </section>
+<%- include('./layout/footer') %>

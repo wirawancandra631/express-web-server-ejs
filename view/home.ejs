@@ -1,0 +1,28 @@
+<%- include('./layout/header') %>
+<div class="data-content">
+  <% if (messages.add_success) { %>
+     <div class="alert-success"><p><%= messages.add_success %></p></div>
+  <% } %>
+    <table class="table" >
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Name Product</th>
+                <th>Price Product</th>
+                <th>Supplier Product</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.forEach(product => { %>
+             
+                <tr>
+                    <td><%= product.id_product %></td>
+                    <td><%= product.name_product %></td>
+                    <td><%= formatCurrency(product.price_product) %></td>
+                    <td><span class="badge"><%= product.supplier %></span></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+<%-include('./layout/footer')%>
